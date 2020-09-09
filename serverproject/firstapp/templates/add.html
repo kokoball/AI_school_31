@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>추가하기</h1>
+    <form action="{% url 'add' treatment_obj.pk %}" method="POST" >
+        {% csrf_token %}
+        <input placeholder="환자 아이디" name='patient_id'>
+        <br/>
+        <br/>
+        <input placeholder="이름 입력" name='name' />
+        <br/>
+        <br/>
+        <input placeholder="사진 종류" name='image' />
+        <br/>
+        <br/>
+        <input placeholder="번호 입력" name='phone_num' />
+        <br/>
+        <br/>
+        <label for="intro">환자 상태 설명</label>
+        <br/>
+        <textarea id="intro" name="intro_text"></textarea>
+        <br/>
+        <br/>
+        <button type="submit">등록</button>
+    </form>
+</body>
+</html>

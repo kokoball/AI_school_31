@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>사진 업로드 화면</h1>
+    {{treatment_obj.doctor}}
+    {{treatment_obj.patient_num}}
+
+    {% for patient in patient_obj %}
+    <ul>
+        <li>{{patient.name}}</li>
+    </ul>
+    {% endfor %}
+    <a href= "{% url 'add' treatment_obj.pk %}">등록하기</a>
+</body>
+</html>
