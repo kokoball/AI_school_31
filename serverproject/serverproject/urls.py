@@ -20,13 +20,16 @@ from firstapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main, name='main'),
-    # path('main/<int:treatment_pk>', views.main, name='main'),
-    # main에서 넘긴 pk를 받는 url
-    path('upload/<int:treatment_pk>', views.upload, name='upload'),
+    # # main에서 넘긴 pk를 받는 url
+    path('upload/<int:disease>', views.upload, name='upload'),
 
-    path('add/<int:treatment_pk>', views.add, name='add'),
+    path('add/<int:disease_patient_pk>', views.add, name='add'),
 
-    path('signup/', views.signup, name='signup'),
-    path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout'),
+    path('patient/<int:patient_pk>', views.patient_info, name='patient'),
+    path('edit/<int:patient_pk>', views.edit, name='edit'),
+    path('delete/<int:patient_pk>/<int:disease>', views.delete, name='delete'),
+
+    # path('signup/', views.signup, name='signup'),
+    # path('login/', views.login, name='login'),
+    # path('logout/', views.logout, name='logout'),
 ]
