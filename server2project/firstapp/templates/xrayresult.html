@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>xray 결과 페이지</h1>
+    <br/>
+    <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 정상 이미지</textarea>
+    <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 환자 이미지</textarea>
+    <br/><br/>
+    <h4>Normal</h4>
+    <h4>Upload Image</h4>
+    <br/>
+    <h3>결과는 ~%입니다</h3>
+    <a href="{% url 'main' %}">
+        <button>확인</button>
+    </a>
+
+    <a href="{% url 'mydata' %}">
+        <button type="submit">My Data</button>
+    </a>
+</body>
+</html>

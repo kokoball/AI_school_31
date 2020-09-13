@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>xray 서비스 페이지</h1>
+    <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 환자 이미지</textarea>
+    <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 정상 이미지</textarea>
+    <br/><br/>
+    <button name="이미지 선택">이미지 선택</button>
+    <button name="이미지 등록">이미지 등록</button>
+
+    <a href= "{% url 'xrayresult' %}">
+        <button name="결과 보기">결과 보기</button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>메인 페이지</h1>
+    
+    <a href="{% url 'signup' %}">Sign up</a>
+    <a href="{% url 'login' %}">Log in</a>
+    <br/>
+    <br/>
+    <textarea name="홈페이지 설명" cols="40" rows="20">홈페이지 설명</textarea>
+    
+    <a href="{% url 'xray' %}">
+        <button name="x-ray">x-ray 서비스</button>
+    </a>
+    
+    <a href="{% url 'ct' %}">
+        <button name="ct">ct 서비스</button>
+    </a>
+
+    {% comment %} <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 이미지</textarea>
+    
+    <textarea name="ct 이미지" cols="10" rows="10">ct 이미지</textarea>
+    <br/>
+    <br/>
+    <button name="x-ray 이미지 등록">x-ray upload</button>
+    <button name="ct 이미지 등록">ct upload</button> {% endcomment %}
+    <br/>
+    <br/>
+    
+</body>
+</html>
