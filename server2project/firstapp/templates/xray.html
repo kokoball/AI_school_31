@@ -7,14 +7,37 @@
 </head>
 <body>
     <h1>xray 서비스 페이지</h1>
-    <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 환자 이미지</textarea>
-    <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 정상 이미지</textarea>
-    <br/><br/>
-    <button name="이미지 선택">이미지 선택</button>
-    <button name="이미지 등록">이미지 등록</button>
+    {% comment %} views.uploadimage에서 날아온 이미지정보를 가지고 이미지로 출력 {% endcomment %}
+    <form action="{% url 'xrayresult' %}" method="POST">
+        {% csrf_token %}
+        <img src={{filepathname}} alt='환자 등록 사진' width='150' height='200' name='filepathname'>
+        <button type="submit">결과</button>
+    </form>
 
+    {% comment %} <textarea name="x-ray 이미지" cols="30" rows="10">x-ray 환자 이미지</textarea> {% endcomment %}
+    {% comment %} <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 정상 이미지</textarea> {% endcomment %}
+    {% comment %} <button name="이미지 선택">이미지 선택</button> {% endcomment %}
+    {% comment %} <button name="이미지 등록">이미지 등록</button> {% endcomment %}
+    <br/><br/>
+    
+    {% comment %} 이미지 등록하기 {% endcomment %}
+    {% comment %} input으로 들어온 사진을 form에 담아 uploadimage url로 보낸다 {% endcomment %}
+    <form method="POST" enctype="multipart/form-data" action="uploadimage"> 
+        {% csrf_token %}
+        <div>
+            <input name="filepath" type="file" value="하하">이미지선택
+        </div>
+        <br/>
+        <div>
+            <input type="submit" value="Submit 이미지 등록">
+        <div/>
+    </form>
+
+    <br/>
     <a href= "{% url 'xrayresult' %}">
         <button name="결과 보기">결과 보기</button>
     </a>
+    <br/>
+    
 </body>
 </html>

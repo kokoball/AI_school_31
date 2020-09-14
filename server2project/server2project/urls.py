@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from firstapp import views
+from django.conf.urls import url
+
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +35,8 @@ urlpatterns = [
 
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
+
+    url('uploadimage', views.uploadimage, name='uploadimage'), # xray.html에서 온 사진을 views에 있는 uploadimage로 보낸다
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

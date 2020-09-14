@@ -18,11 +18,17 @@
         <br/><br/>
         <input type='text' placeholder='이름을 입력하세요' name='name' />
         <br/><br/>
+        <input type='text' placeholder='나이를 입력하세요' name='age' />
+        <br/><br/>
         <input type='text' placeholder='이메일을 입력하세요' name='email' />
         <br/><br/>
         <input type='text' placeholder='전화번호를 입력하세요' name='phone_num' />
         <br/><br/>
         <button type='submit'>signup</button>
     </form>
+
+    {% if error.state %}
+    <h2>{{error.msg}}</h2>
+    {% endif %}
 </body>
 </html>
