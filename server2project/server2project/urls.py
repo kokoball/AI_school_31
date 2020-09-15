@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from firstapp import views
 from django.conf.urls import url
 
@@ -33,8 +33,13 @@ urlpatterns = [
 
     path('mydata', views.mydata, name='mydata'),
 
-    path('signup/', views.signup, name='signup'),
-    path('login/', views.login, name='login'),
+    # path('signup/', views.signup, name='signup'),
+    # path('login/', views.login, name='login'),
+
+    #--------------------------------
+    path('accounts/', include('accounts.urls')),
+
+
 
     url('uploadimage', views.uploadimage, name='uploadimage'), # xray.html에서 온 사진을 views에 있는 uploadimage로 보낸다
 ]

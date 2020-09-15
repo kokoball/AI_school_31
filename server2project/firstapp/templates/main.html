@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'firstapp/style.css' %}" type="text/css" />
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +13,13 @@
     <title>Document</title>
 </head>
 <body>
+
+{% block content %}
+    <br/></br/>
     <h1>메인 페이지</h1>
     
-    <a href="{% url 'signup' %}">Sign up</a>
-    <a href="{% url 'login' %}">Log in</a>
+    {% comment %} <a href="{% url 'signup' %}">Sign up</a>
+    <a href="{% url 'login' %}">Log in</a> {% endcomment %}
     <br/>
     <br/>
     <textarea name="홈페이지 설명" cols="40" rows="20">홈페이지 설명</textarea>
@@ -40,3 +50,4 @@
     
 </body>
 </html>
+{% endblock %}

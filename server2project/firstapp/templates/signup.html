@@ -10,7 +10,7 @@
 
     <form action="{% url 'signup' %}" method='POST'>
         {% csrf_token %}
-        <input type='text' placeholder='아이디를 입력하세요' name='user_id' />
+        {% comment %} <input type='text' placeholder='아이디를 입력하세요' name='user_id' /> {% endcomment %}
         <br/><br/>
         <input type='password' placeholder='비밀번호를 입력하세요' name='user_pw' />
         <br/><br/>
@@ -30,5 +30,7 @@
     {% if error.state %}
     <h2>{{error.msg}}</h2>
     {% endif %}
+
+    
 </body>
 </html>

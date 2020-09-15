@@ -57,81 +57,81 @@ ERROR_MSG = {
 }
 
 
-def signup(request):    # url에서 정보를 받아온다
+# def signup(request):    # url에서 정보를 받아온다
 
-    context= {
-        'error':{
-            'state': False,
-            'msg':''
-        }
-    }
+#     context= {
+#         'error':{
+#             'state': False,
+#             'msg':''
+#         }
+#     }
 
-    if request.method == "POST":    # signup.html에서 버튼을 누르면 post가 온다
+#     # if request.method == "POST":    # signup.html에서 버튼을 누르면 post가 온다
 
-        # post에 담긴 내용들
-        user_id = request.POST['user_id']
-        user_pw = request.POST['user_pw']
-        user_pw_check = request.POST['user_pw_check']
-        name = request.POST['name']
-        age= request.POST['age']
-        email = request.POST['email']
-        phone_num = request.POST['phone_num']
+#         # post에 담긴 내용들
+#         # user_id = request.POST['user_id']
+#         # user_pw = request.POST['user_pw']
+#         # user_pw_check = request.POST['user_pw_check']
+#         # name = request.POST['name']
+#         # age= request.POST['age']
+#         # email = request.POST['email']
+#         # phone_num = request.POST['phone_num']
 
-        if (user_id and user_pw): #아이디 비번 있는 경우??
-            user= User.objects.filter(username=user_id)
-            # user= User.objects.all()
-            if len(user)==0:
+#         # if (user_id and user_pw): #아이디 비번 있는 경우??
+#         #     user= User.objects.filter(username=user_id)
+#         #     # user= User.objects.all()
+#         #     if len(user)==0:
 
-                if user_pw == user_pw_check:
+#         #         if user_pw == user_pw_check:
 
-                    # participate_image= ImageClass.objects.get(imagename=imagename)
+#         #             # participate_image= ImageClass.objects.get(imagename=imagename)
 
-                    created_user = User.objects.create_user(
-                        username= user_id,
-                        password= user_pw
-                    )
+#         #             created_user = User.objects.create_user(
+#         #                 username= user_id,
+#         #                 password= user_pw
+#         #             )
 
-                    #추가
-                    PatientClass.objects.create(
-                        # participate_image=participate_image,
-                        user= created_user,
-                        name= name,
-                        age= age,
-                        phone_num= phone_num
-                    )
+#         #             #추가
+#         #             PatientClass.objects.create(
+#         #                 # participate_image=participate_image,
+#         #                 user= created_user,
+#         #                 name= name,
+#         #                 age= age,
+#         #                 phone_num= phone_num
+#         #             )
 
-                    auth.login(request, created_user)
+#         #             auth.login(request, created_user)
 
-                    return redirect('main') # 버튼을 눌러서 post가 갔다가 if에 만족하니 다시 main으로 돌아간다
-                    # context = {
-                    #     'user': user
-                    # }
+#         #             return redirect('main') # 버튼을 눌러서 post가 갔다가 if에 만족하니 다시 main으로 돌아간다
+#         #             # context = {
+#         #             #     'user': user
+#         #             # }
 
-                    # return render(request, 'main.html', context)
+#         #             # return render(request, 'main.html', context)
 
-                else:   # 비번과 비번 재입력값이 다른 경우
-                    context['error']['state']=True
-                    context['error']['msg']= ERROR_MSG['PW_CHECK']
+#         #         else:   # 비번과 비번 재입력값이 다른 경우
+#         #             context['error']['state']=True
+#         #             context['error']['msg']= ERROR_MSG['PW_CHECK']
 
-            else:   # 아이디가 존재하는 경우
-                context['error']['state']=True
-                context['error']['msg']= ERROR_MSG['ID_EXIST']
+#         #     else:   # 아이디가 존재하는 경우
+#         #         context['error']['state']=True
+#         #         context['error']['msg']= ERROR_MSG['ID_EXIST']
         
-        else:   # 아이디 비번 없는 경우
-            context['error']['state']=True
-            context['error']['msg']= ERROR_MSG['ID_PW_MISSING']
+#         # else:   # 아이디 비번 없는 경우
+#         #     context['error']['state']=True
+#         #     context['error']['msg']= ERROR_MSG['ID_PW_MISSING']
 
-    return render(request, 'signup.html', context) # html로 간다
-
-
+#     return render(request, 'signup.html', context) # html로 간다
 
 
-def login(request):
 
-    if request.method == "POST":
-        return redirect('main')
 
-    return render(request, 'login.html')
+# def login(request):
+
+#     if request.method == "POST":
+#         return redirect('main')
+
+#     return render(request, 'login.html')
 
 
 def uploadimage(request):
@@ -146,4 +146,4 @@ def uploadimage(request):
         'filepathname': filepathname
     }
 
-    return render(request, 'xray.html', context) # 저장된 파일을 context에 담아 xray.html로 보낸다
+    return render(request, ['xray.html','xrayresult.html'], context) # 저장된 파일을 context에 담아 xray.html로 보낸다

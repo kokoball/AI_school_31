@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'firstapp/style.css' %}" type="text/css" />
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +13,7 @@
     <title>Document</title>
 </head>
 <body>
+{% block content %}
     <h1>ct 서비스 페이지</h1>
     <textarea name="ct 이미지" cols="30" rows="10">환자 ct 이미지</textarea>
     {% comment %} <textarea name="ct 이미지" cols="10" rows="10">정상 ct 이미지</textarea> {% endcomment %}
@@ -17,3 +25,4 @@
     </a>
 </body>
 </html>
+{% endblock %}
