@@ -29,6 +29,12 @@
                 </a>
             </div>
         {% endif %}
+
+        <div class="container">
+            <a href="{% url 'mydata' %}">
+                <button name="ct">내 데이터</button>
+            </a>
+        </div> 
         
         {% block content %}
         {% endblock %}

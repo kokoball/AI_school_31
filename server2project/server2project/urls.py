@@ -18,8 +18,8 @@ from django.urls import path, include
 from firstapp import views
 from django.conf.urls import url
 
-from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,12 +33,8 @@ urlpatterns = [
 
     path('mydata', views.mydata, name='mydata'),
 
-    # path('signup/', views.signup, name='signup'),
-    # path('login/', views.login, name='login'),
-
     #--------------------------------
     path('accounts/', include('accounts.urls')),
-
 
 
     url('uploadimage', views.uploadimage, name='uploadimage'), # xray.html에서 온 사진을 views에 있는 uploadimage로 보낸다

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from firstapp.models import ImageClass, PatientClass, Photo
+from firstapp.models import DoctorClass, PatientClass, Photo
 
 # Create your views here.
 
@@ -15,33 +15,31 @@ def signup(request):
         user_pw= request.POST['password']
         user_pw_check= request.POST['password_check']
         #####
+
+        user_name= request.POST['name']
+        user_age= request.POST['age']
+        user_phone_num= request.POST['phone_num']
+        user_info= request.POST['info_text']
         
-        # if (request.POST['username'] and request.POST['password'] and request.POST['password'] == request.POST['password_check']):
-        #     new_user= User.objects.create_user(
-        #         username= request.POST['username'],
-        #         password= request.POST['password'],
-        #     )
+
         if (user_id and user_pw and user_pw == user_pw_check):
 
-            #####
-            # user= User.objects.filter(useranme=user_id)
-            ####
 
-            participate_image= ImageClass.objects.get(
-                participate_image=participate_image)
 
             new_user= User.objects.create_user(
                 username=user_id,
                 password=user_pw
             )
 
-            #####
             PatientClass.objects.create(
                 user= new_user,
-                # name= name,
-                # phone_num= phone_num
+                name= user_name,
+                age= user_age,
+                phone_num= user_phone_num,
+                infotext= user_info
+
             )
-            #####
+
 
             auth.login(request, new_user)
             return redirect('main')

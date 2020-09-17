@@ -1,3 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'firstapp/style.css' %}" type="text/css" />
+{% endblock %}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +15,22 @@
     <title>Document</title>
 </head>
 <body>
+
+{% block content %}
     <h1>my data</h1>
     <textarea>aaaaaaaaaaaaaaa</textarea>
+    <br/><br/>
+
+    {% for image in all_image %}
+        {{image.image}}
+        {% comment %} <img src="{{image.url}}" {% endcomment %}
+        {% comment %} <img src="{% static 'image.url' %}"></img> {% endcomment %}
+        {% comment %} <img src="{{image.image.url}}"> {% endcomment %}
+        {% comment %} <img src={{image}}> {% endcomment %}
+        {% comment %} <img src="/ firstapp {{image.image.url}}">  {% endcomment %}
+        
+    {% endfor %}
+
     <br/><br/>
     <a href="{% url 'main' %}">
         <button>확인</button>
@@ -15,3 +38,4 @@
     
 </body>
 </html>
+{% endblock %}
