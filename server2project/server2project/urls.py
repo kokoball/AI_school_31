@@ -28,16 +28,30 @@ urlpatterns = [
     path('xray/', views.xray, name='xray'),
     path('ct/', views.ct, name='ct'),
 
-    path('xray/result/', views.xrayresult, name='xrayresult'),
-    path('ct/result/', views.ctresult, name='ctresult'),
+    # path('xray/result/', views.xrayresult, name='xrayresult'),
+
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    path('xray/result/<int:post_pk>', views.xrayresult, name='xrayresult'),
+
+    # path(r'^(?P<int:post_pk>\d+)/$', views.xrayresult, name='xrayresult'),
+
+    # path('ct/result/', views.ctresult, name='ctresult'),
 
     path('mydata', views.mydata, name='mydata'),
+
+    # path('xray/passimage/<int:img_id>', views.passimage, name='passimage'),
+    # path('xray/passimage/<int:img_id>', views.passimage, name='passimage'),
+
 
     #--------------------------------
     path('accounts/', include('accounts.urls')),
 
 
     url('uploadimage', views.uploadimage, name='uploadimage'), # xray.html에서 온 사진을 views에 있는 uploadimage로 보낸다
+
+    url('imageshow/<int:photo_id>', views.imageshow, name='imageshow'),
+
 ]
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

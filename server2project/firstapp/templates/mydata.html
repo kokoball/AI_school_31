@@ -22,14 +22,16 @@
     <br/><br/>
 
     {% for image in all_image %}
-        {{image.image}}
-        {% comment %} <img src="{{image.url}}" {% endcomment %}
-        {% comment %} <img src="{% static 'image.url' %}"></img> {% endcomment %}
-        {% comment %} <img src="{{image.image.url}}"> {% endcomment %}
-        {% comment %} <img src={{image}}> {% endcomment %}
-        {% comment %} <img src="/ firstapp {{image.image.url}}">  {% endcomment %}
+        {% comment %} {{image.image}} {% endcomment %}
+        
+        {% comment %} filter로 유저별 사진을 정렬한 데이터들의 집합 all_image에서 각image에서 image를 가져온다라는 의미 {% endcomment %}
+        {% if image.image %} 
+            <img src="{{image.image.url}}" width='150' height='200'>
+        {% endif %}
         
     {% endfor %}
+
+    {{all_image_url}}
 
     <br/><br/>
     <a href="{% url 'main' %}">

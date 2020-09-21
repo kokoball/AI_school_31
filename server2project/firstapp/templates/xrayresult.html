@@ -16,14 +16,26 @@
 {% block content %}
 
     <h1>xray 결과 페이지</h1>
-    {{files}}
+    {% comment %} {{files}} {% endcomment %}
     {% comment %} <img src={{files}} alt='환자 등록 사진' width='150' height='200' name='image2'> {% endcomment %}
     {% comment %} {{image}} {% endcomment %}
     
-    <img src="{{post.image.url}}"></img>
-    <img src="{{image}}"></img>
+    {% comment %} <img src="{{post.image.url}}"></img>
+    <img src="{{image}}"></img> {% endcomment %}
+    {% comment %} {% if request.session.image %}
+        {{image}}
+    {% endif %} {% endcomment %}
     
+    {% comment %} {{ request.session.image }}
+    <img src='{{ request.session.image.image.url }}'> {% endcomment %}
+    {% comment %} {% if request.session.image %}
+        <img src="{{request.session.image.url}}">
+    {% endif %} {% endcomment %}
 
+    {% comment %} {{image}} {% endcomment %}
+    
+    {% comment %} 가져온 이미지 보여주기 {% endcomment %}
+    <img src="/media/{{image.image}}"> 
 
     <br/>
     <textarea name="x-ray 이미지" cols="10" rows="10">x-ray 정상 이미지</textarea>
@@ -40,6 +52,7 @@
     <a href="{% url 'mydata' %}">
         <button type="submit">My Data</button>
     </a>
+
 
 </body>
 </html>

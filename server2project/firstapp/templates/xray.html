@@ -17,18 +17,15 @@
 {% block content %}
     <h1>xray 서비스 페이지</h1>
     {% comment %} views.uploadimage에서 날아온 이미지정보를 가지고 이미지로 출력 {% endcomment %}
-    <form action="{% url 'xrayresult' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
         {% comment %} 1번 방법 {% endcomment %}
         {% comment %} <img src={{filepathname}} alt='환자 등록 사진' width='150' height='200' name='filepathname'> {% endcomment %}
 
         {% comment %} 2번 방법 {% endcomment %}
+        {% comment %} 업로드한 사진을 보여주기 {% endcomment %}
         {% if post.image %}
-            <img src="{{post.image.url}}" name="image"></img>
+            <img src="{{post.image.url}}" width='150' height='200' name="image"></img>
         {% endif %}
-
-        <button type="submit">결과</button>
-    </form>
+        
 
 
     <br/><br/>
@@ -43,10 +40,53 @@
         <br/>
         <div>
             <input type="submit" value="Submit 이미지 등록">
-        <div/>
+        </div>
     </form>
 
 
+    {% comment %} <a href= "{% url 'xrayresult' %}">
+        <button name="결과 보기">결과 보기</button>
+    </a>  {% endcomment %}
+
+    {% comment %} <a href= "{% url 'xrayresult' %}">
+        <button name="결과 보기">결과 보기 form 추가</button>
+        <form action="{% url 'imageshow' photo.id %}" method="POST">
+            {% csrf_token %}
+        </form> 
+    </a>  {% endcomment %}
+
+    {% comment %} !!!!!!!!!!!!!!!!!!!!!!!!!!!! {% endcomment %}
+    
+    {% if post %}
+        <form action="{% url 'xrayresult' post.pk %}" method="POST">
+            {% csrf_token %}
+            <button name="결과 보기">결과 보기 TEST</button>
+        </form> 
+    {% endif %}
+
+    {% comment %} ~~~~ {% endcomment %}
+    {% comment %} 이게 진짜에요 {% endcomment %}
+    {% comment %} <form action="{% url 'xrayresult' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">결과보기 test</button>
+    </form> {% endcomment %}
+    
+
+    {% comment %} <form action="xrayresult" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <button type="submit">결과</button>
+    </form>  {% endcomment %}
+
+
+    {% comment %} !!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 {% endcomment %}
+    {% comment %} <a href="{% url 'passimage' %}">sss</a> {% endcomment %}
+    {% comment %} {% for a in post %}
+        {{a.pk}}
+    {% endfor %}  {% endcomment %}
+
+    {{post.pk}}
+    {{pk}}
     
 </body>
 </html>

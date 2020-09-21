@@ -15,25 +15,35 @@ def main(request):
     return render(request, 'main.html')
 
 def xray(request):
+    
+    if request.method == "GET":
+        return render(request, 'xray.html')
+    
+    
+
     return render(request, 'xray.html')
 
 def ct(request):
     return render(request, 'ct.html')
 
-def xrayresult(request):
+def xrayresult(request, post_pk):
+
 
     if request.method == "POST":
 
-        # image= Photo.objects.all()
-        image= request.FILES
+        image= Photo.objects.get(pk=post_pk)
+        # image= request.FILES()
         
         context ={
             'image': image
         }
-        print('!!!!!!!!!!', context)
+        
         return render(request,'xrayresult.html', context)
 
-    return render(request, 'xrayresult.html', context)
+    # !!!!!!!!!!!!!!!!!!!!!!! 
+    # image= Photo.objects.get(pk=post.pk)
+
+    return render(request, 'xrayresult.html')
 
 def ctresult(request):
     return render(request, 'ctresult.html')
@@ -45,7 +55,7 @@ def mydata(request):
     all_image= Photo.objects.filter(post_id=user)
     # all_image_url = all_image['image']
     # print('!!!!', all_image)
-    # all_image= request.FILES['all_image']
+    # all_image_url= request.FILES['all_image']
     # all_image= fs.url(all_image)
 
     context= {
@@ -80,23 +90,54 @@ def uploadimage(request):
     # ----------------------------
 
     # 2번 방법
-    
-    user= request.user
+    if request.method=="POST":
+        user= request.user
 
-    image= None
-    if 'image' in request.FILES:
-        image= request.FILES['image']
+        image= None
+        if 'image' in request.FILES:
+            image= request.FILES['image']
 
-    post= Photo(post=user, image=image)
-    post.save()
+        post= Photo(post=user, image=image)
+        post.save()
 
-    context= {
-        'post': post
-    }
+        #!!!!!!!!!!!!!!!
+        pk= post.pk
+
+
+        context= {
+            'post': post,
+            'pk': pk
+            
+        }
 
     return render(request, 'xray.html', context) # 저장된 파일을 context에 담아 xray.html로 보낸다
 
 
 # ---------------------------
 
+# def save_session(request, image):
+#     # request.session['user']= user
+#     request.session['image']=
 
+
+# !!!!!!!!!!!!!!!!!!!111
+# def passimage(request, img_id):
+#     img_id= img_id
+#     photo= Photo.objects.get(pk=img_id)
+
+#     context={
+#         'img_id':img_id,
+#         'photo':photo.image
+#     }
+#     return render(request, 'xrayresult.html', context)
+
+def imageshow(request, photo_id):
+    image= Photo.objects.get(id=photo_id)
+    photo_id= photo_id
+
+    context= {
+        'image': image,
+        'photo_id': photo_id
+    }
+
+    return render(request, 'xrayresult.html', context)
