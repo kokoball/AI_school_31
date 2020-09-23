@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+{%block css%}<link rel="stylesheet" href="/static/result.css">{%endblock %}
+{%block title%}Result page{%endblock %}
+
+{%block content %}
+<div class="data">
+    <div class="mydatatitle">
+        <div><h1 style="color:#93A5FF;">AI Analysis</h1></div>
+    </div>
+        <!--{{files}}-->
+    <div class="mydata">
+        <div class="image">
+            <div class="imagebox">
+                <div class="imageupload"><img src="../../media/images/normal.jpeg" class="imageupload"></img></div>
+                <div class="imagename">Normal</div>
+            </div>
+            <div style="width:100px"></div>
+            <div class="imagebox">
+                <div class="imageupload"><img src="/media/{{image.image}}" class="imageupload"></img></div>
+                <div class="imagename">Upload Image</div> 
+            </div>
+        </div>    
+        <div class="result">
+            <div class="resultbox">
+                <div><p class="resulttext">결과는 {{pred_class}} 입니다.</p></div>
+            </div>
+        </div>
+        <div class="button">
+            <div class="buttonbox" style="margin-left: 300px;">
+                <a href="{% url 'main' %}">
+                <button type="button" class="btn" style="background-color:#93A5FF; color:#fff;">Home</button>
+                </a>
+            </div>
+            <div style="width:200px"></div>
+            <div class="buttonbox" style="margin-right: 300px;">
+                <a href="{% url 'mydata' %}">
+                <button type="button" class="btn" style="background-color:#CDABEA; color:#fff;width:100px;">Data</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

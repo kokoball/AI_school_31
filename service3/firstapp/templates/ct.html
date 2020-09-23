@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{%block css%}<link rel="stylesheet" href="/static/upload.css">{%endblock %}
+{%block title%}Upload page{%endblock %}
+
+{%block content %}
+    <div class="data">
+    <div class="mydatatitle">
+        <div><h1 style="color:#93A5FF;">CT Image Upload</h1></div>
+    </div>
+
+    <div class="mydata" style="background-color: #fff;">
+        <div>
+            <form action="{% url 'ctresult' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if post.image %}
+                    <img src="{{post.image.url}}" name="image" class="image"></img>
+                <div class="button">
+                    <button type="submit" class="btn" style="background-color:rgb(205, 165, 240); color:#fff;">결과 보기</button>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+        <div style="width:30px;"></div>
+    
+        <div>
+            <form action="uploadimage" enctype="multipart/form-data" method="POST"> 
+                {% csrf_token %}
+                <div class="imageupload">
+                    <label>Image &nbsp; &nbsp;</label>
+                    <input name="image" type="file" value="하하">
+                </div>
+                <div class="patient">
+                    <label>Patient&nbsp;&nbsp;</label>
+                    <input type="text"/>
+                </div>
+                <div style="height:60px;"></div>
+                <div class="button">
+                    <input type="submit" class="btn" style="background-color:#93A5FF; color:#fff;" value="이미지 등록">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

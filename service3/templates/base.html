@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/business-frontpage.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/sty.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Roboto&display=swap" rel="stylesheet">
+    {%block css%}{%endblock %}
+    <title>{%block title%}{%endblock %}</title>
+</head>
+<body>
+    <div class="nav">
+        <nav class="navbar navbar-expand-lg fixed-top" style="padding: 20px; height: 10%; background-color:#FFF;">
+            <div class="container">
+            <a class="navbar-brand navf">
+                <img src="/static/img/원.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                10Class
+            </a>
+            <div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link navf" href="{% url 'main'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navf" href="{% url 'mydata'%}" >Data</a>
+                    </li>
+
+
+                    {% if user.is_authenticated %}
+                    <form action={% url 'accounts:logout' %} method="POST">
+                    <li class="nav-item logout1"> 
+                        <div class="nav-link user">
+                            {% csrf_token %}
+                            {{user.get_username}} 님
+                        </div>
+                        <div>
+                        <button type="submit" class="btn logout">LOGOUT</button>
+                        </div>
+                    </li>
+                    </form>   
+                    {% else %}
+                    <li>
+                        <a href="{% url 'accounts:signup' %}" class="nav-link navf">
+                            <button type="submit" class="btn logout">SIGNUP</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:login' %}" class="nav-link navf">
+                            <button type="submit" class="btn logout">LOGIN</button>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </div>
+
+<!--본문-->
+    <div class="body">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+<!--하단 footer-->
+    <div class="footer">
+        <footer class="cl py-5">
+            <div>
+            <p class="m-0 text-center text-white">Gwangju AI Academy , Korea, 2020</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

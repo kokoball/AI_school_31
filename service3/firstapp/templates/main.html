@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{%block title%}Main page{%endblock %}
+
+{%block content %}
+<div class="main">
+    <div class="main1">
+        <div>
+            <h1 class=" text-white mt-5 mb-2">Until liberated from COVID-19</h1>
+        </div>
+        <div style="width:520px; text-align:center;">
+            <p class="lead mb-5 text-white-50">We provide an artificial intelligence solution to read covid-19<br>
+and pneumonia by analyzing chest X-ray and CT images.<br>
+It is expected that it can be used for screening patients with<br>
+lung diseases, monitoring patients' progress, and research.</p>
+        </div>
+    </div>
+    <div class="main2">
+        <div style="height:50px;"><h4 class="text-white">Please Upload X-ray or CT Image</h4></div>
+        <div class= "upload">
+            <div class="box1">
+                <div class="xray">
+                    <p class="lead text-white">X-ray</p>
+                </div>
+                <div style="height:5px;"></div>
+                <div class="button">
+                    <button type="button" class="btn" style="background-color:#93A5FF; color:#fff;" onclick="window.location.href='xray/'">Image Upload</button>
+                </div>
+            </div>
+            <div style="width:30px;"></div>
+            <div class="box2">
+                <div class="ct">
+                    <div>
+                        <p class="lead text-white">CT</p>
+                    </div>
+                </div>
+                <div style="height:5px;"></div>
+                <div class="button">
+                    <button type="button" class="btn" style="background-color:#93A5FF; color:#fff;" onclick="window.location.href='ct/'">Image Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

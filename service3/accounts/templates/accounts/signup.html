@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{%block css%}<link rel="stylesheet" href="/static/signup.css">{%endblock %}
+{%block title%}Signup page{%endblock %}
+
+{%block content %}
+<div class="signupbox">
+    <div class="signuptitle">
+        <div><h1 style="color:#93A5FF;">Sign up</h1></div>
+    </div>
+    <div class="signform">
+        <form class="form-signup" action="{% url 'accounts:signup' %}" method="POST" autocomplete=off>
+            {% csrf_token %}
+            <div class='formbox'>
+                <input type="text" id="name" name="name" class="inputform input-block-level" placeholder="   이름">
+            </div>
+
+            <div class='formbox'>
+                <input type="text" id="username" name="username" class="inputform input-block-level" placeholder="   아이디">
+            </div>
+            
+            <div class='formbox'>
+                <input type="password" id="password" name="password" class="inputform input-block-level" placeholder="   비밀번호">
+            </div>
+
+            <div class='formbox'>
+                <input type="password" id="password_check" name="password_check" class="inputform input-block-level" placeholder="   비밀번호 확인">
+            </div>
+            <!--
+            <div class='formbox'>
+                <input type="text" id="age" name="age" class="inputform input-block-level" placeholder="나이입력">
+            </div>
+
+            <div class='formbox'>
+                <input type="text" id="phone_num" name="phone_num" class="inputform input-block-level" placeholder="번호입력">
+            </div>
+
+            <div class='formbox'>
+                <input type="text" id="info_text" name="info_text" class="inputform input-block-level" placeholder="번호입력">
+            </div>
+            -->
+            <div class="signupbuttonbox">
+                <button type="submit" class="signupbutton btn btn-large">회원가입</button>
+            </div>
+        </form>
+    <br/>
+    </div>
+</div>
+{%endblock%}

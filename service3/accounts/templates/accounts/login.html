@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{%block css%}<link rel="stylesheet" href="/static/signup.css">{%endblock %}
+{%block title%}Signup page{%endblock %}
+
+{%block content %}
+<div class="signupbox" style="height:400px;">
+    <div class="signuptitle">
+        <div><h1 style="color:#93A5FF;">Sign in</h1></div>
+    </div>
+    <div class="signform">
+        <form class="form-signup" name="form_signup" id="form_signup" method="POST" action="{% url 'accounts:login' %}" autocomplete=off>
+            {% csrf_token %}
+
+            <div class="formbox">
+                <input type="text" id="username" name="username" class="inputform input-block-level" placeholder="   아이디">
+            </div>
+
+            <div class="formbox">
+                <input type="password" id="password" name="password" class="inputform input-block-level" placeholder="   비밀번호">
+            </div>
+            <div class="signupbuttonbox">
+                <button type="submit" class="signupbutton btn btn-large">로그인</button>
+            </div>
+            <div class="formbox" style="height: 10px;">
+                    <p>_____________________________________________</p>
+            </div>
+            <div class="formbox" style="height: 40px; font-size: 5px;">
+                    <p>아이디찾기 &nbsp; | &nbsp; 비밀번호 찾기 &nbsp; | &nbsp; 회원가입</p>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}
